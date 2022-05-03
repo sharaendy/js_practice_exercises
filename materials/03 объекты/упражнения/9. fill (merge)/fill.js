@@ -6,14 +6,9 @@ export default (object, keys, data) => {
 };
 
 //! решение 1
-import _ from 'lodash';
-
-// BEGIN (write your solution here)
-export default function fill(originalObj, keys, donorObj) {
+function fill(originalObj, keys, donorObj) {
   if (keys.length === 0) Object.assign(originalObj, donorObj);
   const modifDonorObj = _.pick(donorObj, keys);
   const assignedObj = Object.assign(originalObj, modifDonorObj);
   return assignedObj;
 }
-
-
