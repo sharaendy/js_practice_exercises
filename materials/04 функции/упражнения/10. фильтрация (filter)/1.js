@@ -1,8 +1,4 @@
-function extractChildren(obj) {
-  const currentChildren = obj.children;
-  return currentChildren;
-}
-
+const extractChildren = (obj) => obj.children;
 const getChildren = (coll) => coll.map(extractChildren).flat();
 
 const users = [
