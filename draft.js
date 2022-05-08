@@ -1,23 +1,11 @@
-//! лучший
-const isEven = (num) => num % 2 === 0;
+function merge(...objects) {
+  // function sorter(acc, item) {
+    // if (!Object.hasOwn(acc, obj)) {
+    //   acc[item]
+    // }
+  // }
+  return objects.map((item) => item);
+}
 
-export default (arr) => {
-  const firstItemParity = isEven(arr[0]);
-  return arr.filter((el) => isEven(el) === firstItemParity);
-};
-
-//! вариант 1
-const isEven = (num) => num % 2 === 0;
-const isUneven = (num) => num % 2 !== 0;
-
-const sameParity = (coll) => {
-  if (isEven(coll[0])) {
-    return coll.filter(isEven);
-  } else if (isUneven(coll[0])) {
-    return coll.filter(isUneven);
-  }
-};
-
-console.log(sameParity([-1, 0, 1, -3, 10, -2])); // [-1, 1, -3]
-console.log(sameParity([2, 0, 1, -3, 10, -2])); // [2, 0, 10, -2]
-console.log(sameParity([])); // []
+console.log(merge({ a: 1, b: 2 }, { a: 3 }));
+// { a: [1, 3], b: [2] }
