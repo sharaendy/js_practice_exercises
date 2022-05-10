@@ -1,4 +1,17 @@
-//!мое решение
+//! лучшее
+const sumIntervals = (intervals) => {
+  const values = [];
+  for (const [start, end] of intervals) {
+    for (let i = start; i < end; i += 1) {
+      if (!values.includes(i)) {
+        values.push(i);
+      }
+    }
+  }
+  return values.length;
+};
+
+//! решение 1
 function bubbleSort(coll) {
   let steps = coll.length - 1;
 
@@ -80,22 +93,3 @@ const sumIntervals = (coll) => {
 //   [16, 19],
 //   [5, 100],
 // ])); //130 
-
-//!мое решение
-
-//!эталон
-const sumIntervals = (intervals) => {
-  const values = [];
-  for (const [start, end] of intervals) {
-    for (let i = start; i < end; i += 1) {
-      if (!values.includes(i)) {
-        values.push(i);
-      }
-    }
-  }
-  return values.length;
-};
-//!эталон
-
-
-

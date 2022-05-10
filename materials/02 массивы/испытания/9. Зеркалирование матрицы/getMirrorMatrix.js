@@ -1,21 +1,4 @@
-//!мое решение
-function getMirrorMatrix(matrix) {
-  const newMatrix = [];
-  for (const row of matrix) {
-    const newRow = [];
-    for (let i = 0; i < Math.floor(row.length) / 2; i += 1) {
-      newRow.push(row[i]);
-    }
-    for (let j = Math.floor(row.length - 1.1) / 2; j >= 0; j -= 1) {
-      newRow.push(row[j]);
-    }
-    newMatrix.push(newRow);
-  }
-  return newMatrix;
-}
-//!мое решение
-
-//!эталон
+//! лучшее
 const getMirrorArray = (array) => {
   const size = array.length;
   const mirrored = [];
@@ -38,14 +21,22 @@ const getMirrorMatrix = (matrix) => {
 
   return mirroredMatrix;
 };
-//!эталон
 
-// console.log(getMirrorMatrix([
-//   [11, 12, 13, 14],
-//   [21, 22, 23, 24],
-//   [31, 32, 33, 34],
-//   [41, 42, 43, 44],
-// ]));
+//! решение 1
+function getMirrorMatrix(matrix) {
+  const newMatrix = [];
+  for (const row of matrix) {
+    const newRow = [];
+    for (let i = 0; i < Math.floor(row.length) / 2; i += 1) {
+      newRow.push(row[i]);
+    }
+    for (let j = Math.floor(row.length - 1.1) / 2; j >= 0; j -= 1) {
+      newRow.push(row[j]);
+    }
+    newMatrix.push(newRow);
+  }
+  return newMatrix;
+}
 
 console.log(getMirrorMatrix([
   [11, 12, 13, 14, 15, 16],

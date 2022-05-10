@@ -1,17 +1,4 @@
-//!мое решение
-function hammingWeight(num) {
-  let divResult = num;
-  let onesCount = 0;
-
-  while (divResult > 0) {
-    onesCount += divResult % 2;
-    divResult = Math.floor(divResult / 2);
-  }
-  return onesCount;
-}
-//!мое решение
-
-//!эталон
+//! лучшее
 const hammingWeight = (num) => {
   let weight = 0;
   const digits = num.toString(2);
@@ -22,9 +9,20 @@ const hammingWeight = (num) => {
 
   return weight;
 };
-//!эталон
 
 console.log(hammingWeight(5)); // 2
 console.log(hammingWeight(10)); // 2
 console.log(hammingWeight(101)); // 4
 console.log(hammingWeight(12345)); // 6
+
+//! решение 1
+function hammingWeight(num) {
+  let divResult = num;
+  let onesCount = 0;
+
+  while (divResult > 0) {
+    onesCount += divResult % 2;
+    divResult = Math.floor(divResult / 2);
+  }
+  return onesCount;
+}
