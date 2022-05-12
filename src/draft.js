@@ -1,1 +1,0 @@
-const point2 = makeDecartPoint(getX(point1) + getWidth(rectangle),getY(point1) - getHeight(rectangle),);
