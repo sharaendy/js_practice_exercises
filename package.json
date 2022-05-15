@@ -2,7 +2,7 @@
   "name": "js_practice_exercises",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "draft.js",
   "type": "module",
   "scripts": {
     "test": "jest --colors"
@@ -28,6 +28,7 @@
     "prettier": "^2.6.2"
   },
   "dependencies": {
+    "@hexlet/immutable-fs-trees": "^0.7.1",
     "lodash": "^4.17.21"
   }
 }
