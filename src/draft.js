@@ -1,9 +1,10 @@
-export const If = (func) => func;
+const compose = (fn1, fn2) => (num) => fn1(fn2(num));
+const f = compose(Math.sqrt, Math.abs);
 
-export const True = (value1) => () => value1;
-export const False = () => (value2) => value2;
+console.log(f(-4)); //2
 
-const ConditionFunction1 = If(True);
-console.log(ConditionFunction1('one')('two')); // one
-const ConditionFunction2 = If(False);
-console.log(ConditionFunction2('one')('two')); // two
+// console.log(compose((v) => v, (v) => v)(10));         // 10
+// console.log(compose((v) => v + 2, (v) => v)(10));     // 12
+// console.log(compose((v) => v, v => (v) - 2)(10));     // 8
+// console.log(compose((v) => v ** 2, (v) => v - 2)(2)); // 0
+// console.log(compose((v) => v - 2, (v) => v ** 2)(2)); // 2
