@@ -1,5 +1,7 @@
 //! алгоритм сортировки выбором. Мой вариант: функция внутри возвращает индекс наименьшего числа переданного массива. Основная функция оболочка прогоняет входной массив возвращая выпрямленный и упорядоченный массив.
+
 function selectionSort(coll) {
+
   function getSmallestIndex(arr) {
     let num = arr[0];
     let index = 0;
@@ -15,7 +17,6 @@ function selectionSort(coll) {
 
   const duration = coll.length;
   const sortedColl = [];
-
   for (let i = 1; i <= duration; i += 1) {
     const smallestIndex = getSmallestIndex(coll);
     sortedColl.push(coll.splice(smallestIndex, 1));
