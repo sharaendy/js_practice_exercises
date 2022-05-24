@@ -1,10 +1,15 @@
-const compose = (fn1, fn2) => (num) => fn1(fn2(num));
-const f = compose(Math.sqrt, Math.abs);
+const object = { number: 10 };
+const func = function fn(num) {
+  return num + this.number;
+};
 
-console.log(f(-4)); //2
+export default function bind(obj, fn) {
+  return function xxx(...args) {
+    return fn.apply(obj, args);
+  };
+}
 
-// console.log(compose((v) => v, (v) => v)(10));         // 10
-// console.log(compose((v) => v + 2, (v) => v)(10));     // 12
-// console.log(compose((v) => v, v => (v) - 2)(10));     // 8
-// console.log(compose((v) => v ** 2, (v) => v - 2)(2)); // 0
-// console.log(compose((v) => v - 2, (v) => v ** 2)(2)); // 2
+// console.log(bind(object, func));
+
+const fnWithContext = bind(object, func);
+console.log(fnWithContext(3)); // 13
