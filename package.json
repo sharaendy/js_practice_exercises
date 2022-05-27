@@ -2,7 +2,7 @@
   "name": "js_practice_exercises",
   "version": "1.0.0",
   "description": "",
-  "main": "draft.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "jest --colors"
@@ -20,15 +20,21 @@
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
+    "@jest/globals": "^28.1.0",
     "babel-jest": "^28.1.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
     "jest": "^28.1.0",
+    "jest-circus": "^28.1.0",
+    "jest-cli": "^28.1.0",
     "prettier": "^2.6.2"
   },
   "dependencies": {
     "@hexlet/immutable-fs-trees": "^0.7.1",
+    "@hexlet/pairs": "^1.1.1",
+    "@hexlet/points": "^1.1.1",
     "lodash": "^4.17.21"
   }
 }
