@@ -1,23 +1,34 @@
-import { makePoint, toString } from '@hexlet/points';
-import { calculateDistance, getQuadrant, getSymmetricalPoint } from '../src/draft.js';
+// @ts-check
+import { makePoint, toString as pointToString } from '@hexlet/points';
+import {
+  makeSegment,
+  startSegment,
+  endSegment,
+  midpointSegment,
+  segmentToString,
+} from '../src/draft.js';
 
-describe('points', () => {
-  it('getQuadrant', () => {
-    expect(getQuadrant(makePoint(0, 0))).toBeNull();
-    expect(getQuadrant(makePoint(5, 0))).toBeNull();
-    expect(getQuadrant(makePoint(1, 5))).toBe(1);
-    expect(getQuadrant(makePoint(-3, 10))).toBe(2);
-    expect(getQuadrant(makePoint(-2, -5))).toBe(3);
-    expect(getQuadrant(makePoint(4, -1))).toBe(4);
+describe('segment', () => {
+  const segment = makeSegment(makePoint(1, 2), makePoint(-4, -2));
+  const segment2 = makeSegment(makePoint(2, 8), makePoint(4, -2));
+
+  it('startSegment', () => {
+    expect(pointToString(startSegment(segment))).toBe(pointToString(makePoint(1, 2)));
+    expect(pointToString(startSegment(segment2))).toBe(pointToString(makePoint(2, 8)));
   });
 
-  it('getSymmetricalPoint', () => {
-    expect(toString(getSymmetricalPoint(makePoint(10, 10)))).toBe(toString(makePoint(-10, -10)));
-    expect(toString(getSymmetricalPoint(makePoint(-10, -10)))).toBe(toString(makePoint(10, 10)));
-    expect(toString(getSymmetricalPoint(makePoint(10, -10)))).toBe(toString(makePoint(-10, 10)));
+  it('endSegment', () => {
+    expect(pointToString(endSegment(segment))).toBe(pointToString(makePoint(-4, -2)));
+    expect(pointToString(endSegment(segment2))).toBe(pointToString(makePoint(4, -2)));
   });
 
-  it('calculateDistance', () => {
-    expect(calculateDistance(makePoint(-2, -3), makePoint(-4, 4))).toBeCloseTo(7.28, 2);
+  it('segmentToString', () => {
+    expect(segmentToString(segment)).toBe('[(1, 2), (-4, -2)]');
+    expect(segmentToString(segment2)).toBe('[(2, 8), (4, -2)]');
+  });
+
+  it('midpointSegment', () => {
+    expect(pointToString(midpointSegment(segment))).toBe('(-1.5, 0)');
+    expect(pointToString(midpointSegment(segment2))).toBe('(3, 3)');
   });
 });
