@@ -1,13 +1,47 @@
-import Time from '../src/draft.js';
+import Truncater from '../src/draft.js';
 
-test('#1', () => {
-  const time = Time.fromString('10:23');
-  expect(time).toBeInstanceOf(Time);
-  expect(`The time is ${time}`).toEqual('The time is 10:23');
+const cases1 = [
+  [{}, 'one two'],
+  [{ length: 6 }, 'one tw...'],
+  [{ separator: '.' }, 'one two'],
+  [{ length: 3 }, 'one...'],
+  [{ length: 7 }, 'one two'],
+];
+
+describe('Truncater with default options', () => {
+  const truncater = new Truncater();
+
+  test.each(cases1)('extend options: %o', (params, expected) => {
+    expect(truncater.truncate('one two', params)).toEqual(expected);
+  });
 });
 
-test('#2', () => {
-  const time = Time.fromString('3:8');
-  expect(time).toBeInstanceOf(Time);
-  expect(`The time is ${time}`).toEqual('The time is 3:8');
+const cases2 = [
+  [{}, 'one...'],
+  [{ separator: '!' }, 'one!'],
+  [{}, 'one...'],
+  [{ length: 7 }, 'one two'],
+];
+
+describe('Truncater with custom length', () => {
+  const truncater = new Truncater({ length: 3 });
+
+  test.each(cases2)('extend options: %o', (params, expected) => {
+    expect(truncater.truncate('one two', params)).toEqual(expected);
+  });
+});
+
+const cases3 = [
+  [{}, 'one two'],
+  [{ length: 3 }, 'one__'],
+  [{ length: 5, separator: '' }, 'one t'],
+  [{}, 'one two'],
+];
+
+describe('Truncater with custom separator', () => {
+  const truncater = new Truncater({ separator: '__' });
+
+  test.each(cases3)('extend options: %o', (params, expected) => {
+    expect(truncater.truncate('one two', params)).toEqual(expected);
+  });
 });
