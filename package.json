@@ -35,6 +35,7 @@
     "@hexlet/immutable-fs-trees": "^0.7.1",
     "@hexlet/pairs": "^1.1.1",
     "@hexlet/points": "^1.1.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "yup": "^0.32.11"
   }
 }

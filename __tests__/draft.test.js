@@ -1,47 +1,97 @@
-import Truncater from '../src/draft.js';
+// @ts-check
 
-const cases1 = [
-  [{}, 'one two'],
-  [{ length: 6 }, 'one tw...'],
-  [{ separator: '.' }, 'one two'],
-  [{ length: 3 }, 'one...'],
-  [{ length: 7 }, 'one two'],
+import getInvalidBooks from '../src/draft.js';
+
+const books1 = [
+  {
+    name: 'besi',
+    author: 'dostoevski',
+    pagesCount: 100,
+    genre: 'drama',
+    link: 'https://some.ru',
+  },
+  {
+    name: 'book',
+    author: 'author',
+  },
+  {
+    name: 'book 2',
+    author: 'author 2',
+    genre: 'drama',
+    pagesCount: '50 страниц', // должно быть числом
+  },
+  {
+    name: 'book 3',
+    author: 'author 3',
+    genre: 'fantasy',
+    pagesCount: -5, // должно быть положительным числом
+  },
 ];
 
-describe('Truncater with default options', () => {
-  const truncater = new Truncater();
-
-  test.each(cases1)('extend options: %o', (params, expected) => {
-    expect(truncater.truncate('one two', params)).toEqual(expected);
-  });
-});
-
-const cases2 = [
-  [{}, 'one...'],
-  [{ separator: '!' }, 'one!'],
-  [{}, 'one...'],
-  [{ length: 7 }, 'one two'],
+const books2 = [
+  {
+    name: 'besi',
+    author: 'dostoevski',
+    pagesCount: 100,
+    genre: 'drama',
+    link: 'верхняя правая полка', // должен быть url
+  },
+  {
+    name: 'book 2',
+    author: 'author 2',
+  },
 ];
 
-describe('Truncater with custom length', () => {
-  const truncater = new Truncater({ length: 3 });
-
-  test.each(cases2)('extend options: %o', (params, expected) => {
-    expect(truncater.truncate('one two', params)).toEqual(expected);
-  });
-});
-
-const cases3 = [
-  [{}, 'one two'],
-  [{ length: 3 }, 'one__'],
-  [{ length: 5, separator: '' }, 'one t'],
-  [{}, 'one two'],
+const books3 = [
+  {
+    name: 'besi',
+    author: 'dostoevski',
+    pagesCount: 100,
+    genre: 'drama',
+    link: 'https://some.ru',
+  },
+  {
+    name: 'book',
+    author: 'author',
+    genre: 'fiction', // некорректный жанр
+  },
+  {
+    name: 'book 2',
+    author: 'author 2',
+    genre: 'fantasy',
+    pagesCount: 50,
+  },
 ];
 
-describe('Truncater with custom separator', () => {
-  const truncater = new Truncater({ separator: '__' });
+const books4 = [
+  {
+    name: 'besi',
+    author: 'dostoevski',
+    pagesCount: 100,
+    genre: 'drama',
+    link: 'https://some.ru',
+  },
+  {
+    name: 'voina i mir',
+    author: 'lev tolstoy',
+    pagesCount: 1000,
+    genre: 'drama',
+    link: '', // не может быть пустой строкой
+  },
+];
 
-  test.each(cases3)('extend options: %o', (params, expected) => {
-    expect(truncater.truncate('one two', params)).toEqual(expected);
-  });
+const cases = [
+  ['пустая библиотека', [], []],
+  ['pagesCount не число или отрицательное', books1, [books1[2], books1[3]]],
+  ['link не url', books2, [books2[0]]],
+  ['жанр не из списка', books3, [books3[1]]],
+  ['link пустая строка', books4, [books4[1]]],
+  ['всё вместе',
+    [].concat(books1, books2, books3),
+    [].concat(books1[2], books1[3], books2[0], [books3[1]]),
+  ],
+];
+
+test.each(cases)('case %#: %s', (_caseName, books, expected) => {
+  expect(getInvalidBooks(books)).toEqual(expected);
 });
