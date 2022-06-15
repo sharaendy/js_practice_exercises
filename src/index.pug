@@ -1,0 +1,39 @@
+-
+  const user = {
+    login: 'hexlet',
+    password: 'hexletpass',
+    name: 'Кодовёнок',
+    surname: 'Хекслетович',
+    role: 'admin',
+    testing: true,
+  }
+
+doctype html
+html(lang='ru')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='icon' type='image/x-icon' href='favicon.ico')
+    title Hexlet Profile
+  body
+    section.profile-links
+      h1 Кодовёнок Хекслетович
+      nav #[a(href="#") Настройки]
+        
+        .divider
+        a(href="#") Промокод
+        a(href="#") Доступ в подарок
+
+        .divider
+          if user.role !== 'user'
+            a(href="#") Учительская
+            a(href="#") Менторство
+            a(href="#") Маркетинг
+
+        .divider
+        a(href="#") Помощь
+        button Выйти
+    section
+      if user.role !== 'user' && user.testing === true
+        h2 Сводка по тестированию
+        include ../data/testing.pug
