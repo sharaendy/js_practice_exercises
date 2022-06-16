@@ -1,11 +1,34 @@
+//- pug index.pug --pretty --watch --out ./build/
 -
-  const user = {
-    login: 'hexlet',
-    password: 'hexletpass',
-    name: 'Кодовёнок',
+  const contacts = {
+    'А': [
+      {
+        name: 'Александр',
+        surname: 'Хекслетович',
+      },
+      {
+        name: 'Андрей',
+        surname: 'Верстальщиков',
+      },
+      {
+        name: 'Артём',
+        surname: 'Джаваскриптов',
+      },
+    ],
+    'Б': [
+     {
+    name: 'Борис',
     surname: 'Хекслетович',
-    role: 'admin',
-    testing: true,
+     },
+     {
+    name: 'Боров',
+    surname: 'Верстальщиков',
+     },
+     {
+    name: 'Боровик',
+    surname: 'Джаваскриптов',
+     },
+    ]
   }
 
 doctype html
@@ -16,24 +39,8 @@ html(lang='ru')
     link(rel='icon' type='image/x-icon' href='favicon.ico')
     title Hexlet Profile
   body
-    section.profile-links
-      h1 Кодовёнок Хекслетович
-      nav #[a(href="#") Настройки]
-        
-        .divider
-        a(href="#") Промокод
-        a(href="#") Доступ в подарок
-
-        .divider
-          if user.role !== 'user'
-            a(href="#") Учительская
-            a(href="#") Менторство
-            a(href="#") Маркетинг
-
-        .divider
-        a(href="#") Помощь
-        button Выйти
-    section
-      if user.role !== 'user' && user.testing === true
-        h2 Сводка по тестированию
-        include ../data/testing.pug
+    each item if contacts
+      each people, char in contacts
+      h2 = char
+      ul
+        li people.name + ' ' + people.surname
