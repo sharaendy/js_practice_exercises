@@ -1,0 +1,48 @@
+body {
+  margin-left: 20%;
+  margin-top: 20%;
+  font-size: 36px;
+  font-family: 'Arial';
+}
+
+button {
+  width: 200px;
+  height: 100px;
+  border: solid 3px;
+
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-size: 24px;
+  background-color: greenyellow;
+}
+
+.nav-link.active {
+  background-color: red;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.tab-content {
+  border: solid 1px gray;
+  width: 400px;
+  font-size: 16px;
+}
+
+.tab-pane {
+  padding: 20px;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}

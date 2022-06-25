@@ -39,6 +39,7 @@
     "@hexlet/points": "^1.1.1",
     "async": "^3.2.4",
     "axios": "^0.27.2",
+    "escape-goat": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "lodash": "^4.17.21",
