@@ -57,3 +57,33 @@ export default () => {
 
   inputEl.focus();
 };
+
+//! 3
+export default function calc() {
+  let state = 0;
+
+  const form = document.querySelector('.form-inline');
+  const input = document.querySelector('.form-control');
+  const resetButton = document.querySelector('.form-inline button');
+  const result = document.querySelector('#result');
+
+  input.focus();
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const number = formData.get('number');
+    state += parseInt(number, 10);
+    result.textContent = state;
+    form.reset();
+    input.focus();
+  });
+
+  resetButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('click', state)
+    state = 0;
+    result.textContent = state;
+    form.reset();
+    input.focus();
+  });
+}

@@ -2,6 +2,7 @@
 export default async function toDo() {
   const responseState = await axios.get(routes.tasksPath());
   const state = responseState.data;
+
   const inputEl = document.querySelector('.form-control');
   const formEl = document.querySelector('.form-inline');
   const ulEl = document.querySelector('.list-group');
@@ -76,3 +77,41 @@ const app = async () => {
 };
 
 export default app;
+
+//! 3
+export default async function toDo() {
+  const state = {
+    items: [], // {name: 'имя задачи'}
+  };
+
+  function render(data) {
+    list.innerHTML = '';
+    data.items.forEach((task) => {
+      const newTask = document.createElement('li');
+      newTask.classList.add('list-group-item');
+      newTask.textContent = task.name;
+      list.append(newTask);
+    });
+  }
+
+  const form = document.querySelector('.form-inline');
+  const input = document.querySelector('.form-control');
+  const list = document.querySelector('#tasks');
+
+  const response = await axios.get(routes.tasksPath());
+  response.data.items.forEach((outerTask) => state.items.push(outerTask));
+  render(state);
+
+  input.focus();
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const taskName = formData.get('name');
+    state.items.unshift({ name: taskName });
+    input.value = '';
+    input.focus();
+    render(state);
+    axios.post(routes.tasksPath(), { name: taskName });
+  });
+}
