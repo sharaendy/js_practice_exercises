@@ -1,13 +1,15 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
+// src/Card.jsx
+// Реализуйте компонент Card, возвращающий следующий jsx:
 
-// import './index.css';
-
-// import Card from './Card.jsx';
-
-// const mountRoot = document.querySelector('#react-root');
-// const content = ReactDOM.createRoot(mountRoot);
-// content.render(<Card />);
+// <div className="card">
+//   <div className="card-body">
+//     <h4 className="card-title">Card title</h4>
+//     <p className="card-text">Some quick example text to build on the card</p>
+//     <button type="button" className="btn btn-primary">Go somewhere</button>
+//   </div>
+// </div>
+// src/index.jsx
+// Импортируйте Card.jsx и отрисуйте компонент внутри dom элемента с id равным container
 
 //! решение 1
 export default function getCard(obj) {

@@ -35,7 +35,6 @@ export default function app(laptops) {
       state.filtered.forEach((item) => {
         const liEl = document.createElement('li');
         liEl.textContent = item.model;
-        console.log('!', liEl.textContent)
         ulEl.append(liEl);
       });
       result.append(ulEl);
