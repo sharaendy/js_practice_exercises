@@ -13,6 +13,7 @@
 //     </div>
 //   </div>
 // </div>
+
 // После клика к классу collapse элемента <div> добавляется класс show, a значение атрибута aria-expanded меняется на true.
 
 import React from 'react';
@@ -158,7 +159,7 @@ const root = ReactDOM.createRoot(mountNode);
 root.render(<Collapse text={text} opened={false} />);
 
 
-//! 3
+//! 4
 import React from 'react';
 import cn from 'classnames';
 
